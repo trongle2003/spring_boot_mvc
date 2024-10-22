@@ -8,7 +8,10 @@ import org.springframework.data.repository.CrudRepository;
 import vn.hoidanit.laptopshop.domain.User;
 
 //crud : create, read , update , delete
-public interface UserRepository extends JpaRepository<User,Long> {
+public interface UserRepository extends JpaRepository<User, Long> {
     User save(User trong);
+
     List<User> findByEmail(String email);
+
+    List<User> findAll();
 }
