@@ -14,7 +14,7 @@
         </head>
 
         <body>
-            <form action="user/create" method="get" class="container mt-5" modelAttribute="Users1">
+            <form method="get" class="container mt-5" modelAttribute="Users1">
                 <div class="row">
                     <div class="col-10 mx-auto">
                         <table class="table table-bordered">
@@ -22,7 +22,7 @@
                             <thead>
                                 <div class="d-flex justify-content-between">
                                     <h2>Table users</h2>
-                                    <button type="submit" class="btn btn-primary">Create a user</button>
+                                    <a href="/admin/user/create" type="submit" class="btn btn-primary">Create a user</a>
                                 </div>
                                 <hr>
                                 <tr>
@@ -41,8 +41,10 @@
                                         <td>
                                             <a href="/admin/user/${user.id}" type="submit"
                                                 class="btn btn-success">View</a>
-                                            <button type="submit" class="btn btn-warning">Update</button>
-                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                            <a href="/admin/user/update/${user.id}" type="submit"
+                                                class="btn btn-warning">Update</a>
+                                            <a href="/admin/user/delete/${user.id}" type="submit"
+                                                class="btn btn-danger">Delete</a>
                                         </td>
                                     </tr>
                                 </c:forEach>

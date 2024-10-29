@@ -29,10 +29,11 @@
                                         Information of User ${id}
                                     </div>
                                     <ul class="list-group list-group-flush">
-                                        <li class="list-group-item">Id: ${id}</li>
-                                        <li class="list-group-item">Email: ${email}</li>
-                                        <li class="list-group-item">FullName: ${fullName}</li>
-                                        <li class="list-group-item">Address: ${address}</li>
+                                        <li class="list-group-item">Id: ${Users1.id}</li>
+                                        <!-- truyền giá trị thông qua modelAttribute -->
+                                        <li class="list-group-item">Email: ${Users1.email}</li>
+                                        <li class="list-group-item">FullName: ${Users1.fullName}</li>
+                                        <li class="list-group-item">Address: ${Users1.address}</li>
                                     </ul>
                                 </div>
                         </table>

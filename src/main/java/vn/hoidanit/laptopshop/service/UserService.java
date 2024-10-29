@@ -20,6 +20,12 @@ public class UserService {
         return "hello from service ";
     }
 
+    public User handleSaveUser(User user) {
+        User trong = this.userRepository.save(user);
+        System.out.println(trong);
+        return trong;
+    }
+
     public List<User> getAllUsers() {
         return this.userRepository.findAll();
     }
@@ -31,5 +37,14 @@ public class UserService {
     public User handleUserService(User user) {
         User trong = this.userRepository.save(user);
         return trong;
+    }
+
+    public User getUserById(long id) {
+        return this.userRepository.findById(id);
+
+    }
+
+    public User deleteUserById(long id) {
+        return this.userRepository.deleteById(id);
     }
 }
