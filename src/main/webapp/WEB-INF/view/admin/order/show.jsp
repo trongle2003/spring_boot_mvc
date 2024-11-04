@@ -11,7 +11,7 @@
                 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
                 <meta name="description" content="Hỏi Dân IT - Dự án laptopshop" />
                 <meta name="author" content="Hỏi Dân IT" />
-                <title>Delete - Hỏi Dân IT</title>
+                <title>Orders - Hỏi Dân IT</title>
                 <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
                 <link href="/css/styles.css" rel="stylesheet" />
                 <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
@@ -24,31 +24,12 @@
                     <div id="layoutSidenav_content">
                         <main>
                             <div class="container-fluid px-4">
-                                <h1 class="mt-4">Manager Delete </h1>
+                                <h1 class="mt-4">Manager Order </h1>
                                 <ol class="breadcrumb mb-4">
                                     <li class="breadcrumb-item"><a href="/admin">Dashboard</a></li>
-                                    <li class="breadcrumb-item active">Delete</li>
+                                    <li class="breadcrumb-item active">Orders</li>
                                 </ol>
-                                <form:form action="/admin/user/delete" method="get" class="container mt-5"
-                                    modelAttribute="Users1">
-                                    <div class="row">
-                                        <div class="col-md-6 col-12 mx-auto">
-                                            <div class="d-flex justify-content-between">
-                                                <h3>Delete User ${id}</h3>
-                                            </div>
-
-                                            <hr />
-                                            <div class="alert alert-danger" role="alert">
-                                                Are you want delete this user ${id} ?
-                                            </div>
-                                            <form:form action="">
-                                                <button class="btn btn-danger">Confirm</button>
-                                            </form:form>
-
-                                            </form>
-                                        </div>
-                                    </div>
-                                </form:form>
+                                <div>order</div>
                             </div>
                         </main>
                         <jsp:include page="../layout/footer.jsp" />

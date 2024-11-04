@@ -1,4 +1,4 @@
-package vn.hoidanit.laptopshop.controller;
+package vn.hoidanit.laptopshop.controller.admin;
 
 import java.util.List;
 
@@ -47,7 +47,7 @@ public class UserController {
     public String getTable(Model model) {
         List<User> Users = this.userService.getAllUsers();
         model.addAttribute("Users1", Users);
-        return "admin/user/table";
+        return "admin/user/show";
     }
 
     @RequestMapping(value = "/admin/user/create", method = RequestMethod.POST)
