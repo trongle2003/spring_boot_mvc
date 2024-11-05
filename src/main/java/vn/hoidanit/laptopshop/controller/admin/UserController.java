@@ -1,5 +1,9 @@
 package vn.hoidanit.laptopshop.controller.admin;
 
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
@@ -10,9 +14,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
+import jakarta.servlet.ServletContext;
 import vn.hoidanit.laptopshop.domain.User;
 import vn.hoidanit.laptopshop.repository.UserRepository;
 import vn.hoidanit.laptopshop.service.UserService;
@@ -20,9 +25,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class UserController {
-    private UserService userService;
+    private final UserService userService;
 
-    public UserController(UserService userService) {
+    public UserController(UserService userService, ServletContext servletContext) {
         this.userService = userService;
     }
 
@@ -33,7 +38,7 @@ public class UserController {
         return "hello";
     }
 
-    @RequestMapping(value = "admin/user/create")
+    @GetMapping("admin/user/create")
     public String getInformation(Model model, @ModelAttribute("newUser") User trong) { // ModelAttribute để lấy giá trị
                                                                                        // đã được điền tại view
         List<User> arrUsers = this.userService.getAllUsersByEmail("5@gmail.com");
@@ -50,9 +55,10 @@ public class UserController {
         return "admin/user/show";
     }
 
-    @RequestMapping(value = "/admin/user/create", method = RequestMethod.POST)
-    public String createUsers(Model model, @ModelAttribute("newUser") User trong) {
-        this.userService.handleUserService(trong);
+    @PostMapping("/admin/user/create")
+    public String createUsers(Model model, @ModelAttribute("newUser") User trong,
+            @RequestParam("hoidanitFile") MultipartFile file) {
+
         return "redirect:/admin/user"; // chuyển hướng trang bằng redirect
     }
 
