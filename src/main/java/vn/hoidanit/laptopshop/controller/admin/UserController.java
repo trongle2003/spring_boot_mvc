@@ -6,6 +6,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -20,15 +22,21 @@ import org.springframework.web.multipart.MultipartFile;
 import jakarta.servlet.ServletContext;
 import vn.hoidanit.laptopshop.domain.User;
 import vn.hoidanit.laptopshop.repository.UserRepository;
+import vn.hoidanit.laptopshop.service.UploadService;
 import vn.hoidanit.laptopshop.service.UserService;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class UserController {
     private final UserService userService;
+    private final UploadService uploadService;
+    private final PasswordEncoder passwordEncoder;
 
-    public UserController(UserService userService, ServletContext servletContext) {
+    public UserController(UserService userService, UploadService uploadService,
+            PasswordEncoder passwordEncoder) {
         this.userService = userService;
+        this.uploadService = uploadService;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @RequestMapping("/")
@@ -58,7 +66,12 @@ public class UserController {
     @PostMapping("/admin/user/create")
     public String createUsers(Model model, @ModelAttribute("newUser") User trong,
             @RequestParam("hoidanitFile") MultipartFile file) {
-
+        String avatar = this.uploadService.handleSaveUploadFile(file, "avatar");
+        String hashPassword = this.passwordEncoder.encode(trong.getPassword());
+        trong.setAvatar(avatar);
+        trong.setPassword(hashPassword);
+        trong.setRole(this.userService.getRoleByName(trong.getRole().getName()));
+        this.userService.handleSaveUser(trong);
         return "redirect:/admin/user"; // chuyển hướng trang bằng redirect
     }
 
@@ -70,20 +83,24 @@ public class UserController {
         return "/admin/user/detail";
     }
 
-    @RequestMapping(value = "/admin/user/update/{id}")
+    @GetMapping(value = "/admin/user/update/{id}")
     public String updateUserRedirect(Model model, @PathVariable long id) {// PathVariable lấy giá trị trên params
         User User = this.userService.getUserById(id);
         model.addAttribute("Users1", User);// lấy đối tượng user gán cho users1 để mang sang file jsp truyền giá trị
         return "/admin/user/update";
     }
 
-    @GetMapping("/admin/user/update")
-    public String updateUser(Model model, @ModelAttribute("Users1") User tempUser) {
+    @PostMapping("/admin/user/update")
+    public String updateUser(Model model, @ModelAttribute("Users1") User tempUser,
+            @RequestParam("hoidanitFile") MultipartFile file) {
         User currentUser = this.userService.getUserById(tempUser.getId());
+        String avatar = this.uploadService.handleSaveUploadFile(file, "avatar");
         if (currentUser != null) {
             currentUser.setAddress(tempUser.getAddress());
             currentUser.setFullName(tempUser.getFullName());
             currentUser.setPhone(tempUser.getPhone());
+            currentUser.setAvatar(avatar);
+            currentUser.setRole(this.userService.getRoleByName(currentUser.getRole().getName()));
             this.userService.handleSaveUser(currentUser);
         }
         return "redirect:/admin/user";

@@ -14,6 +14,17 @@
                 <title>Update - Hỏi Dân IT</title>
                 <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
                 <link href="/css/styles.css" rel="stylesheet" />
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+                <script>
+                    $(document).ready(() => {
+                        const avatarFile = $("#avatarFile");
+                        avatarFile.change(function (e) {
+                            const imgURL = URL.createObjectURL(e.target.files[0]);
+                            $("#avatarPreview").attr("src", imgURL);
+                            $("#avatarPreview").css({ "display": "block" });
+                        });
+                    });
+                </script>
                 <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
             </head>
 
@@ -29,8 +40,8 @@
                                     <li class="breadcrumb-item"><a href="/admin">Dashboard</a></li>
                                     <li class="breadcrumb-item active">Update</li>
                                 </ol>
-                                <form:form action="/admin/user/update" method="get" class="container mt-5"
-                                    modelAttribute="Users1">
+                                <form:form action="/admin/user/update" method="post" class="container mt-5"
+                                    modelAttribute="Users1" enctype="multipart/form-data">
                                     <div class="row">
                                         <div class="col-md-6 col-12 mx-auto">
                                             <h3>Update user ${id}</h3>
@@ -56,6 +67,25 @@
                                             <div class="mb-3">
                                                 <label class="form-label">Phone: </label>
                                                 <form:input type="text" class="form-control" path="phone" />
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="form-label">Role: </label>
+                                                <form:select class="form-select" path="role.name">
+                                                    <!--role name lấy trường name trong đối tương role vì admin và user chỉ là chuỗi nên không thể lấy ra 1 đối tượng-->
+                                                    <form:option value="ADMIN">ADMIN</form:option>
+                                                    <form:option value="USER">USER</form:option>
+                                                </form:select>
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label for="avatarFile" class="form-label">Avatar: </label>
+                                                <input class="form-control" type="file" id="avatarFile"
+                                                    name="hoidanitFile" accept=".png,.jpg,.jpeg" />
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <img style="max-height: 250px; display: none;" alt="avatar preview"
+                                                    id="avatarPreview" />
                                             </div>
 
                                             <button type="submit" class="btn btn-warning">Update</button>

@@ -5,10 +5,12 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
+import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import jakarta.servlet.ServletContext;
 
+@Service
 public class UploadService {
     private final ServletContext servletContext;
 
@@ -16,28 +18,29 @@ public class UploadService {
         this.servletContext = servletContext;
     }
 
-    public void handleSaveUploadFile(MultipartFile file) {
+    public String handleSaveUploadFile(MultipartFile file, String targetFolder) {
 
         String rootPath = this.servletContext.getRealPath("/resources/images");// lấy ra absolute file
+        String finalName = "";
         try {
             byte[] bytes = file.getBytes();
 
-            File dir = new File(rootPath + File.separator + "avatar");
+            File dir = new File(rootPath + File.separator + targetFolder);
             if (!dir.exists())
                 dir.mkdirs();// make directory
+            finalName = System.currentTimeMillis() + "-" + file.getOriginalFilename();
             // Create the file on server
-            File serverFile = new File(dir.getAbsolutePath() + File.separator +
-                    +System.currentTimeMillis() + "-" + file.getOriginalFilename());
+            File serverFile = new File(dir.getAbsolutePath() + File.separator + finalName);
             // currentTimeMillis file tới sau sẽ ghi đè file tới trước
             BufferedOutputStream stream = new BufferedOutputStream(
                     new FileOutputStream(serverFile));// chuyền vào file bạn muốn lưu
             stream.write(bytes);// ghi file
             stream.close();// kết thúc
-            // this.userService.handleUserService(trong);
-
+            
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
+        return finalName;
     }
 }
