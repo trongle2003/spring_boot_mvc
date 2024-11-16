@@ -244,7 +244,7 @@
                                                             style="top: 10px; left: 10px;">Gaming</div>
                                                         <div
                                                             class="p-4 border border-secondary border-top-0 rounded-bottom">
-                                                            <h4>Acer Predator Helios 18</h4>
+                                                            <h4>Acer Predator Helios Neo 18</h4>
                                                             <p>Core i7 13700HX, RTX 4060, 18 inch FHD+ 165Hz 100% sRGB
                                                             </p>
                                                             <div class="d-flex justify-content-between flex-lg-wrap">

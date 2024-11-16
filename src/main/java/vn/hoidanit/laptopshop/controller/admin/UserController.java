@@ -10,6 +10,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -20,6 +22,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import jakarta.servlet.ServletContext;
+import jakarta.validation.Valid;
+import vn.hoidanit.laptopshop.domain.Product;
 import vn.hoidanit.laptopshop.domain.User;
 import vn.hoidanit.laptopshop.repository.UserRepository;
 import vn.hoidanit.laptopshop.service.UploadService;
@@ -47,12 +51,9 @@ public class UserController {
     }
 
     @GetMapping("admin/user/create")
-    public String getInformation(Model model, @ModelAttribute("newUser") User trong) { // ModelAttribute để lấy giá trị
-                                                                                       // đã được điền tại view
-        List<User> arrUsers = this.userService.getAllUsersByEmail("5@gmail.com");
-        System.out.println(arrUsers);
-        System.out.println("Information in params is: " + trong);
-        userService.handleUserService(trong);
+    public String getInformation(Model model) { // ModelAttribute để lấy giá trị
+                                                // đã được điền tại view
+        model.addAttribute("newUser", new User());
         return "admin/user/create";
     }
 
@@ -64,8 +65,20 @@ public class UserController {
     }
 
     @PostMapping("/admin/user/create")
-    public String createUsers(Model model, @ModelAttribute("newUser") User trong,
+    public String createUsers(Model model,
+            @ModelAttribute("newUser") @Valid User trong,
+            BindingResult newUserBindingResult,
             @RequestParam("hoidanitFile") MultipartFile file) {
+        // validate
+        List<FieldError> errors = newUserBindingResult.getFieldErrors();
+        for (FieldError error : errors) {
+            System.out.println(error.getField() + " - " + error.getDefaultMessage());
+        }
+        // sau khi báo lỗi thì return ra view
+        if (newUserBindingResult.hasErrors()) {
+            return "/admin/user/create";
+        }
+        // xử lý ảnh
         String avatar = this.uploadService.handleSaveUploadFile(file, "avatar");
         String hashPassword = this.passwordEncoder.encode(trong.getPassword());
         trong.setAvatar(avatar);

@@ -11,7 +11,7 @@
                 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
                 <meta name="description" content="Hỏi Dân IT - Dự án laptopshop" />
                 <meta name="author" content="Hỏi Dân IT" />
-                <title>Create - Hỏi Dân IT</title>
+                <title>Update - Hỏi Dân IT</title>
                 <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
                 <link href="/css/styles.css" rel="stylesheet" />
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
@@ -26,7 +26,6 @@
                     });
                 </script>
                 <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-
             </head>
 
             <body class="sb-nav-fixed">
@@ -36,13 +35,13 @@
                     <div id="layoutSidenav_content">
                         <main>
                             <div class="container-fluid px-4">
-                                <h1 class="mt-4">Manager Create</h1>
+                                <h1 class="mt-4">Manager Update </h1>
                                 <ol class="breadcrumb mb-4">
                                     <li class="breadcrumb-item"><a href="/admin">Dashboard</a></li>
-                                    <li class="breadcrumb-item active">Create</li>
+                                    <li class="breadcrumb-item active">Update</li>
                                 </ol>
-                                <form:form action="create" method="post" class="mt-5" modelAttribute="newProduct"
-                                    enctype="multipart/form-data">
+                                <form:form action="/admin/product/update" method="post" class="container mt-5"
+                                    modelAttribute="Products1" enctype="multipart/form-data">
                                     <c:set var="errorName">
                                         <form:errors path="name" cssClass="invalid-feedback" />
                                     </c:set>
@@ -165,14 +164,16 @@
                                                 id="avatarPreview" />
                                         </div>
                                         <div class="col-12 mb-5">
-                                            <button type="submit" class="btn btn-primary">Create</button>
+                                            <button type="submit" class="btn btn-primary">Update</button>
                                         </div>
                                     </div>
                             </div>
+
                             </form:form>
-                        </main>
-                        <jsp:include page="../layout/footer.jsp" />
                     </div>
+                    </main>
+                    <jsp:include page="../layout/footer.jsp" />
+                </div>
                 </div>
                 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
                     crossorigin="anonymous"></script>

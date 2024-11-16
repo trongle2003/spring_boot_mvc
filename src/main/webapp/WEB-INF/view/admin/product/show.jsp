@@ -38,7 +38,7 @@
                                                         <h2>Table Products</h2>
                                                         <a href="/admin/product/create" type="submit"
                                                             class="btn btn-primary">Create a
-                                                            products</a>
+                                                            product</a>
                                                     </div>
                                                     <hr>
                                                     <tr>
@@ -50,22 +50,22 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <!-- <c:forEach var="user" items="${Users1}">
+                                                    <c:forEach var="product" items="${Products1}">
                                                         <tr>
-                                                            <th scope="row">${user.id}</th>
-                                                            <td>${user.email}</td>
-                                                            <td>${user.fullName}</td>
-                                                            <td>${user.role.name}</td>
+                                                            <th scope="row">${product.id}</th>
+                                                            <td>${product.name}</td>
+                                                            <td>${product.price}</td>
+                                                            <td>${product.factory}</td>
                                                             <td>
-                                                                <a href="/admin/user/${user.id}" type="submit"
+                                                                <a href="/admin/product/${product.id}" type="submit"
                                                                     class="btn btn-success">View</a>
-                                                                <a href="/admin/user/update/${user.id}" type="submit"
-                                                                    class="btn btn-warning">Update</a>
-                                                                <a href="/admin/user/delete/${user.id}" type="submit"
-                                                                    class="btn btn-danger">Delete</a>
+                                                                <a href="/admin/product/update/${product.id}"
+                                                                    type="submit" class="btn btn-warning">Update</a>
+                                                                <a href="/admin/product/delete/${product.id}"
+                                                                    type="submit" class="btn btn-danger">Delete</a>
                                                             </td>
                                                         </tr>
-                                                    </c:forEach> -->
+                                                    </c:forEach>
                                                 </tbody>
                                             </table>
 

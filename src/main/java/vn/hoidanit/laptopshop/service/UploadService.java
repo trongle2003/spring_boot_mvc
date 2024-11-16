@@ -19,7 +19,10 @@ public class UploadService {
     }
 
     public String handleSaveUploadFile(MultipartFile file, String targetFolder) {
-
+        // nếu không upload file
+        if (file.isEmpty()) {
+            return "";
+        }
         String rootPath = this.servletContext.getRealPath("/resources/images");// lấy ra absolute file
         String finalName = "";
         try {
@@ -36,7 +39,7 @@ public class UploadService {
                     new FileOutputStream(serverFile));// chuyền vào file bạn muốn lưu
             stream.write(bytes);// ghi file
             stream.close();// kết thúc
-            
+
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();

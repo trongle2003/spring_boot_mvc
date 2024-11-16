@@ -46,28 +46,50 @@
                                     <div class="row">
                                         <h3>Create a user</h3>
                                         <hr />
-                                        <div class="mb-3 col-12 col-md-6">
+                                        <div class="mb-3 col-12 col-md-6" style="display: none;">
                                             <div class="mb-3">
                                                 <label class="form-label">Id: </label>
-                                                <form:input type="text" class="form-control" path="id" />
+                                                <form:input type="text" class="form-control" path="id"
+                                                    disabled="true" />
                                             </div>
                                         </div>
                                         <div class="mb-3 col-12 col-md-6">
+                                            <c:set var="errorEmail">
+                                                <form:errors path="email" cssClass="invalid-feedback" />
+                                            </c:set>
                                             <div class="mb-3">
                                                 <label class="form-label">Email: </label>
-                                                <form:input type="text" class="form-control" path="email" />
+                                                <form:input type="text"
+                                                    class="form-control is-invalid ${not empty errorEmail ? 'is-invalid':''} "
+                                                    path="email" />
+                                                ${errorEmail}
+                                                <form:errors part="email" cssClass="invalid-feedback" />
                                             </div>
                                         </div>
                                         <div class="mb-3 col-12 col-md-6">
+                                            <c:set var="errorFullname">
+                                                <form:errors path="fullName" cssClass="invalid-feedback" />
+                                            </c:set>
                                             <div class="mb-3">
                                                 <label class="form-label">Fullname: </label>
-                                                <form:input type="text" class="form-control" path="fullName" />
+                                                <form:input type="text"
+                                                    class="form-control is-invalid ${not empty errorFullname ? 'is-invalid':''} "
+                                                    path="fullName" />
+                                                ${errorFullname}
+                                                <form:errors part="fullName" cssClass="invalid-feedback" />
                                             </div>
                                         </div>
                                         <div class="mb-3 col-12 col-md-6">
+                                            <c:set var="errorPassword">
+                                                <form:errors path="password" cssClass="invalid-feedback" />
+                                            </c:set>
                                             <div class="mb-3">
                                                 <label class="form-label">Password: </label>
-                                                <form:input type="password" class="form-control" path="password" />
+                                                <form:input type="password"
+                                                    class="form-control is-invalid ${not empty errorPassword ? 'is-invalid':''}"
+                                                    path="password" />
+                                                ${errorPassword}
+                                                <form:errors part="password" cssClass="invalid-feedback" />
                                             </div>
                                         </div>
                                         <div class="mb-3 col-12 col-md-6">
