@@ -87,18 +87,32 @@ public class ProductController {
     public String updateProduct(Model model, @ModelAttribute("Products1") Product tempProduct,
             @RequestParam("hoidanitFile") MultipartFile file) {
         Product currentProduct = this.productService.getProductById(tempProduct.getId());
-        String avatar = this.uploadService.handleSaveUploadFile(file, "product");
         if (currentProduct != null) {
+            if (!file.isEmpty()) {
+                String avatar = this.uploadService.handleSaveUploadFile(file, "product");
+                currentProduct.setImage(avatar);
+            }
             currentProduct.setName(tempProduct.getName());
             currentProduct.setDetailDesc(tempProduct.getDetailDesc());
             currentProduct.setFactory(tempProduct.getFactory());
             currentProduct.setPrice(tempProduct.getPrice());
             currentProduct.setQuantity(tempProduct.getQuantity());
             currentProduct.setShortDesc(tempProduct.getShortDesc());
-            currentProduct.setImage(avatar);
             currentProduct.setTarget(tempProduct.getTarget());
             this.productService.updateProduct(currentProduct);
         }
+        return "redirect:/admin/product";
+    }
+
+    @GetMapping("/admin/product/delete/{id}")
+    public String deleteProductRedirect(Model model, @PathVariable long id) {
+        Product product = this.productService.deleteProduct(id);
+        model.addAttribute("Products1", product);
+        return "/admin/product/delete";
+    }
+
+    @GetMapping("/admin/product/delete")
+    public String deleteProduct() {
         return "redirect:/admin/product";
     }
 

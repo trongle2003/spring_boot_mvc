@@ -18,6 +18,12 @@
                 <script>
                     $(document).ready(() => {
                         const avatarFile = $("#avatarFile");
+                        const orgImage = "${newProduct.image}";
+                        if (orgImage) {
+                            const urlImage = "/images/product/" + orgImage;
+                            $("#avatarPreview").attr("src", orgImage);
+                            $("#avatarPreview").css({ "display": "block" });
+                        }
                         avatarFile.change(function (e) {
                             const imgURL = URL.createObjectURL(e.target.files[0]);
                             $("#avatarPreview").attr("src", imgURL);
@@ -59,17 +65,15 @@
                                     </c:set>
 
                                     <div class="row">
-                                        <h3>Create a product</h3>
+                                        <h3>Update product ${id}</h3>
                                         <hr />
                                         <div class="mb-3 col-12 col-md-6" style="display: none;">
                                             <div class="mb-3">
                                                 <label class="form-label">Id: </label>
-                                                <form:input type="text" class="form-control" path="id"
-                                                    disabled="true" />
+                                                <form:input type="text" class="form-control" path="id" />
                                             </div>
                                         </div>
                                         <div class="mb-3 col-12 col-md-6">
-
                                             <div class="mb-3">
                                                 <label class="form-label">Name: </label>
                                                 <form:input type="text"
@@ -80,7 +84,6 @@
                                             </div>
                                         </div>
                                         <div class="mb-3 col-12 col-md-6">
-
                                             <div class="mb-3">
                                                 <label class="form-label">Price: </label>
                                                 <form:input type="text"
@@ -91,7 +94,6 @@
                                             </div>
                                         </div>
                                         <div class="mb-3 col-12 col-md-6">
-
                                             <div class="mb-3">
                                                 <label class="form-label">Detail description: </label>
                                                 <form:input type="text"
@@ -114,7 +116,6 @@
                                         </div>
 
                                         <div class="mb-3 col-12 col-md-6">
-
                                             <div class="mb-3">
                                                 <label class="form-label">Quantity: </label>
                                                 <form:input type="quantity"
@@ -145,11 +146,11 @@
                                         <div class="mb-3 col-12 col-md-6">
                                             <label class="form-label">Target: </label>
                                             <form:select class="form-select" path="target">
-                                                <form:option value="gaming">Gaming</form:option>
-                                                <form:option value="vanphong">Văn phòng</form:option>
-                                                <form:option value="maytram">Máy Trạm</form:option>
+                                                <form:option value="GAMING">Gaming</form:option>
+                                                <form:option value="SINHVIEN-VANPHONG">Văn phòng</form:option>
+                                                <form:option value="THIET-KE-DO-HOA">Thiết kế đồ họa</form:option>
+                                                <form:option value="MONG-NHE">Mỏng nhẹ</form:option>
                                                 <form:option value="Dev">Dev</form:option>
-
                                             </form:select>
                                         </div>
 
@@ -163,17 +164,21 @@
                                             <img style="max-height: 250px; display: none;" alt="avatar preview"
                                                 id="avatarPreview" />
                                         </div>
+                                        <img src="/images/product/${Products1.image}" alt="Product Image">
+
                                         <div class="col-12 mb-5">
-                                            <button type="submit" class="btn btn-primary">Update</button>
+                                            <button type="submit" class="btn btn-warning">Update</button>
                                         </div>
+
                                     </div>
                             </div>
 
                             </form:form>
                     </div>
                     </main>
-                    <jsp:include page="../layout/footer.jsp" />
+
                 </div>
+                <jsp:include page="../layout/footer.jsp" />
                 </div>
                 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
                     crossorigin="anonymous"></script>

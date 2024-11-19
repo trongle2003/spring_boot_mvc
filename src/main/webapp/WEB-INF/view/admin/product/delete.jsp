@@ -29,17 +29,17 @@
                                     <li class="breadcrumb-item"><a href="/admin">Dashboard</a></li>
                                     <li class="breadcrumb-item active">Delete</li>
                                 </ol>
-                                <form:form action="/admin/user/delete" method="get" class="container mt-5"
-                                    modelAttribute="Users1">
+                                <form:form action="/admin/product/delete" method="get" class="container mt-5"
+                                    modelAttribute="Products1">
                                     <div class="row">
                                         <div class="col-md-6 col-12 mx-auto">
                                             <div class="d-flex justify-content-between">
-                                                <h3>Delete User ${id}</h3>
+                                                <h3>Delete Product ${id}</h3>
                                             </div>
 
                                             <hr />
                                             <div class="alert alert-danger" role="alert">
-                                                Are you want delete this user ${id} ?
+                                                Are you want delete this product ${id} ?
                                             </div>
                                             <form:form action="">
                                                 <button class="btn btn-danger">Confirm</button>

@@ -53,7 +53,7 @@
                                                     <div class="col-12 mb-3">
                                                         <img style="max-height: 250px; display: block;"
                                                             alt="Product Image" id="avatarPreview"
-                                                            src="/images/product" />
+                                                            src="/images/product/${Products1.image}" />
                                                     </div>
 
                                                     <div class="card" style="width: 60%;">

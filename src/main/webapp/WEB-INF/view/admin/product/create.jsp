@@ -146,11 +146,11 @@
                                         <div class="mb-3 col-12 col-md-6">
                                             <label class="form-label">Target: </label>
                                             <form:select class="form-select" path="target">
-                                                <form:option value="gaming">Gaming</form:option>
-                                                <form:option value="vanphong">Văn phòng</form:option>
-                                                <form:option value="maytram">Máy Trạm</form:option>
+                                                <form:option value="GAMING">Gaming</form:option>
+                                                <form:option value="SINHVIEN-VANPHONG">Văn phòng</form:option>
+                                                <form:option value="THIET-KE-DO-HOA">Thiết kế đồ họa</form:option>
+                                                <form:option value="MONG-NHE">Mỏng nhẹ</form:option>
                                                 <form:option value="Dev">Dev</form:option>
-
                                             </form:select>
                                         </div>
 
