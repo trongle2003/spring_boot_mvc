@@ -46,6 +46,7 @@
                     <jsp:include page="../layout/header.jsp" />;
 
 
+
                     <!-- Modal Search Start -->
                     <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                         aria-hidden="true">
@@ -74,6 +75,16 @@
                     <div class="container-fluid py-5 mt-5">
                         <div class="container py-5">
                             <div class="row g-4 mb-5">
+                                <div>
+                                    <nav aria-label="breadcrumb">
+                                        <ol class="breadcrumb">
+                                            <li class="breadcrumb-item"><a href="/">Home</a></li>
+                                            <li class="breadcrumb-item active" aria-current="page">Chi tiết sản phẩm
+                                            </li>
+                                        </ol>
+                                    </nav>
+
+                                </div>
                                 <div class="col-lg-8 col-xl-9">
                                     <div class="row g-4">
                                         <div class="col-lg-6">
@@ -161,7 +172,7 @@
                                                         <li>
                                                             <div class="d-flex justify-content-between fruite-name">
                                                                 <a href="#"><i
-                                                                        class="fas fa-apple-alt me-2"></i>${product.target}</a>
+                                                                        class="fas fa-apple-alt me-2"></i>${product.factory}</a>
                                                                 <span>(3)</span>
                                                             </div>
                                                         </li>
