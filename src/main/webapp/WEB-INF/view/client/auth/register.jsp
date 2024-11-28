@@ -50,6 +50,8 @@
                                                                         placeholder="Enter your first name"
                                                                         path="firstName" />
                                                                     <label for="inputFirstName">First name</label>
+                                                                    <form:errors part="firstName"
+                                                                        cssClass="invalid-feedback" />
                                                                     ${errorFirstName}
                                                                 </div>
                                                             </div>
@@ -65,10 +67,12 @@
                                                         <div class="form-floating mb-3">
                                                             <form:input
                                                                 class="form-control is-invalid ${not empty errorEmail ? 'is-invalid':''} "
-                                                                id="inputEmail" type="email"
-                                                                placeholder="name@example.com" path="email" />
+                                                                type="text" placeholder="name@example.com" path="email"
+                                                                id="inputEmail" />
                                                             <label for="inputEmail">Email address</label>
                                                             ${errorEmail}
+                                                            <form:errors part="email" cssClass="invalid-feedback" />
+
                                                         </div>
                                                         <div class="row mb-3">
                                                             <div class="col-md-6">
@@ -88,6 +92,8 @@
                                                                         path="confirmPassword" />
                                                                     <label for="inputPasswordConfirm">Confirm
                                                                         Password</label>
+                                                                    <form:errors part="confirmPassword"
+                                                                        cssClass="invalid-feedback" />
                                                                     ${errorConfirmPassword}
                                                                 </div>
                                                             </div>

@@ -25,7 +25,7 @@ public class ItemController {
         model.addAttribute("Product1", getproducts);
         model.addAttribute("Products1", product);
         model.addAttribute("id", id);
-        return "/client/product/detail";
+        return "client/product/detail";
     }
 
 }

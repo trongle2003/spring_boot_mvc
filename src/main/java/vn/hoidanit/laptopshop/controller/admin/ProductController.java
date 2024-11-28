@@ -59,7 +59,7 @@ public class ProductController {
 
         // sau khi báo lỗi thì return ra view
         if (newUserBindingResult.hasErrors()) {
-            return "/admin/product/create";
+            return "admin/product/create";
         }
 
         String avatar = this.uploadService.handleSaveUploadFile(file, "product");
@@ -73,14 +73,14 @@ public class ProductController {
         Product product = this.productService.getProductById(id);
         model.addAttribute("Products1", product);
         model.addAttribute("id", id);
-        return "/admin/product/detail";
+        return "admin/product/detail";
     }
 
     @GetMapping(value = "/admin/product/update/{id}")
     public String updateProductRedirect(Model model, @PathVariable long id) {
         Product product = this.productService.getProductById(id);
         model.addAttribute("Products1", product);
-        return "/admin/product/update";
+        return "admin/product/update";
     }
 
     @PostMapping("/admin/product/update")
@@ -108,7 +108,7 @@ public class ProductController {
     public String deleteProductRedirect(Model model, @PathVariable long id) {
         Product product = this.productService.deleteProduct(id);
         model.addAttribute("Products1", product);
-        return "/admin/product/delete";
+        return "admin/product/delete";
     }
 
     @GetMapping("/admin/product/delete")

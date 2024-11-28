@@ -9,10 +9,10 @@ public class RegisterDTO {
     @Size(min = 3, message = "FirstName must have at least 3 characters")
     private String firstName;
     private String lastName;
-    @Email(message = "Invalid email", regexp = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[azA-Z0-9.-]+$")
+    @Email(message = "Invalid Email", regexp = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$")
     private String email;
     private String password;
-    @Size(min = 3, message = "FirstName must have at least 3 characters")
+    @Size(min = 3, message = "ConfirmPassword must have at least 3 characters")
     private String confirmPassword;
 
     public String getFirstName() {

@@ -24,19 +24,20 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Email(message = "Email is not valid", regexp = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[azA-Z0-9.-]+$")
-    @NotEmpty(message = "Email cannot be empty")
+    // @Email(message = "Email is not valid", regexp =
+    // "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[azA-Z0-9.-]+$")
+    // @NotEmpty(message = "Email cannot be empty")
     private String email;
 
-    @NotEmpty(message = "Password cannot be empty")
-    @Size(min = 3, message = "Password must have at least 3 characters")
+    // @NotEmpty(message = "Password cannot be empty")
+    // @Size(min = 3, message = "Password must have at least 3 characters")
     private String password;
-    @NotEmpty(message = "FullName cannot be empty")
-    @Size(min = 3, message = "Fullname must have at least 3 characters")
+    // @NotEmpty(message = "FullName cannot be empty")
+    // @Size(min = 3, message = "Fullname must have at least 3 characters")
     private String fullName;
-    @NotEmpty(message = "Address cannot be empty")
+    // @NotEmpty(message = "Address cannot be empty")
     private String address;
-    @NotEmpty(message = "Phone cannot be empty")
+    // @NotEmpty(message = "Phone cannot be empty")
     private String phone;
     private String avatar; // orm
     // role Id

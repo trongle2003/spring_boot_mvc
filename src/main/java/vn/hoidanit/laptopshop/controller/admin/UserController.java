@@ -76,7 +76,7 @@ public class UserController {
         }
         // sau khi báo lỗi thì return ra view
         if (newUserBindingResult.hasErrors()) {
-            return "/admin/user/create";
+            return "admin/user/create";
         }
         // xử lý ảnh
         String avatar = this.uploadService.handleSaveUploadFile(file, "avatar");
@@ -93,14 +93,14 @@ public class UserController {
         User User = this.userService.getUserById(id);
         model.addAttribute("Users1", User);
         model.addAttribute("id", id);
-        return "/admin/user/detail";
+        return "admin/user/detail";
     }
 
     @GetMapping(value = "/admin/user/update/{id}")
     public String updateUserRedirect(Model model, @PathVariable long id) {// PathVariable lấy giá trị trên params
         User User = this.userService.getUserById(id);
         model.addAttribute("Users1", User);// lấy đối tượng user gán cho users1 để mang sang file jsp truyền giá trị
-        return "/admin/user/update";
+        return "admin/user/update";
     }
 
     @PostMapping("/admin/user/update")
@@ -123,7 +123,7 @@ public class UserController {
     public String deleteUserRedirect(Model model, @PathVariable long id) {
         User User = this.userService.deleteUserById(id);
         model.addAttribute("Users1", User);
-        return "/admin/user/delete";
+        return "admin/user/delete";
     }
 
     @GetMapping("/admin/user/delete")
