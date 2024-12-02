@@ -5,11 +5,13 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.session.security.web.authentication.SpringSessionRememberMeServices;
 
 import jakarta.servlet.DispatcherType;
 import vn.hoidanit.laptopshop.service.CustomUserDetailsService;
@@ -46,6 +48,14 @@ public class SecurityConfiguration {
     }
 
     @Bean
+    public SpringSessionRememberMeServices rememberMeServices() {
+        SpringSessionRememberMeServices rememberMeServices = new SpringSessionRememberMeServices();
+        // optionally customize
+        rememberMeServices.setAlwaysRemember(true);
+        return rememberMeServices;
+    }
+
+    @Bean
     SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         // v6. lamda
         http
@@ -60,12 +70,22 @@ public class SecurityConfiguration {
                         .requestMatchers("/admin/**").hasRole("ADMIN")
                         .anyRequest().authenticated())
 
+                .rememberMe((rememberMe) -> rememberMe
+                        .rememberMeServices(rememberMeServices()))//khi sử dụng sẽ kéo dài thời gian session theo tùy ý
+
+                .sessionManagement((sessionManagement) -> sessionManagement
+                        .sessionCreationPolicy(SessionCreationPolicy.ALWAYS)//luôn tạo mới session
+                        .invalidSessionUrl("/logout?expired")//hết thời hạn session thì logout
+                        .maximumSessions(1)//tại 1 thời điểm có bao nhiêu tài khoản đăng nhập
+                        .maxSessionsPreventsLogin(false))//người sau vào đá người trước ra 
+                .logout(logout -> logout.deleteCookies("JSESSIONID").invalidateHttpSession(true))//thoát thì xóa cookie
+
                 .formLogin(formLogin -> formLogin
                         .loginPage("/login")
                         .failureUrl("/login?error")
                         .successHandler(customSuccessHandler())
                         .permitAll())
-                .exceptionHandling(ex -> ex.accessDeniedPage("/access-deny"));// chuyển hướng 403
+                .exceptionHandling(ex -> ex.accessDeniedPage("/access-deny"));// nếu xảy ra lỗi khi phân quyền 403 thì chuyển hướng sang trang deny
 
         return http.build();
     }
