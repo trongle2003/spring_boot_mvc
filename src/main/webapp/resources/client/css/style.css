@@ -180,7 +180,7 @@
 
 /*** Hero Header ***/
 .hero-header {
-    background: linear-gradient(rgba(248, 223, 173, 0.1), rgba(248, 223, 173, 0.1)), url(../img/e-commerce-3692440_1920.jpg);
+    background: linear-gradient(rgba(248, 223, 173, 5), rgba(248, 223, 173, 0.1)), url(../img/gradient_minimalism_pink-1388127.png);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;

@@ -136,7 +136,7 @@
                                                     <button class="nav-link active border-white border-bottom-0"
                                                         type="button" role="tab" id="nav-about-tab" data-bs-toggle="tab"
                                                         data-bs-target="#nav-about" aria-controls="nav-about"
-                                                        aria-selected="true">Description</button>
+                                                        aria-selected="true">Đặc điểm nổi bật</button>
                                                 </div>
                                             </nav>
                                             <div class="tab-content mb-5">
@@ -159,14 +159,14 @@
                                 <div class="col-lg-4 col-xl-3">
                                     <div class="row g-4 fruite">
                                         <div class="col-lg-12">
-                                            <div class="input-group w-100 mx-auto d-flex mb-4">
+                                            <!-- <div class="input-group w-100 mx-auto d-flex mb-4">
                                                 <input type="search" class="form-control p-3" placeholder="keywords"
                                                     aria-describedby="search-icon-1">
                                                 <span id="search-icon-1" class="input-group-text p-3"><i
                                                         class="fa fa-search"></i></span>
-                                            </div>
+                                            </div> -->
                                             <div class="mb-4">
-                                                <h4>Categories</h4>
+                                                <h4>Loại sản phẩm</h4>
                                                 <ul class="list-unstyled fruite-categorie">
                                                     <c:forEach var="product" items="${Product1}">
                                                         <li>
@@ -185,7 +185,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <h1 class="fw-bold mb-0">Related products</h1>
+                            <h1 class="fw-bold mb-0">Sản phẩm liên quan</h1>
                             <div class="vesitable">
                                 <div class="owl-carousel vegetable-carousel justify-content-center">
                                     <c:forEach var="product" items="${Product1}">
