@@ -136,26 +136,36 @@ public class ProductService {
 
     public void handlePlaceOrder(User user, HttpSession session, String receiverName, String receiverAddress,
             String receiverPhone) {
-        // create order
-        Order order = new Order();
-        order.setUser(user);
-        order.setReceiverAddress(receiverAddress);
-        order.setReceiverName(receiverName);
-        order.setReceiverPhone(receiverPhone);
-        order = this.orderRepository.save(order);
 
         // create order detail
         // step 1 : get cart by user
         Cart cart = this.cartRepository.findByUser(user);
         if (cart != null) {
             List<CartDetail> cartDetails = cart.getCartDetails();
-            for (CartDetail cd : cartDetails) {
-                OrderDetail orderDetail = new OrderDetail();
-                orderDetail.setOrder(order);
-                orderDetail.setProduct(cd.getProduct());
-                orderDetail.setPrice(cd.getPrice());
-                orderDetail.setQuantity(cd.getQuantity());
-                this.orderDetailRepository.save(orderDetail);
+            if (cartDetails != null) {
+                // create order
+                Order order = new Order();
+                order.setUser(user);
+                order.setReceiverAddress(receiverAddress);
+                order.setReceiverName(receiverName);
+                order.setReceiverPhone(receiverPhone);
+                order.setStatus("PENDING");
+                double sum = 0;
+                for (CartDetail cd : cartDetails) {
+                    sum += cd.getPrice();
+                }
+                order.setTotalPrice(sum);
+                order = this.orderRepository.save(order);
+
+                // create orderDetail
+                for (CartDetail cd : cartDetails) {
+                    OrderDetail orderDetail = new OrderDetail();
+                    orderDetail.setOrder(order);
+                    orderDetail.setProduct(cd.getProduct());
+                    orderDetail.setPrice(cd.getPrice());
+                    orderDetail.setQuantity(cd.getQuantity());
+                    this.orderDetailRepository.save(orderDetail);
+                }
             }
 
             // step 2 : delete cart_detail và cart
@@ -171,4 +181,22 @@ public class ProductService {
 
     }
 
+    // lấy tất cả thông tin của order
+    public List<Order> fetchOrders() {
+        return this.orderRepository.findAll();
+    }
+
+    // lấy tất cả thông tin của 1 order
+    public List<OrderDetail> fetchOrderDetails(long id) {
+        return this.orderDetailRepository.findByOrderId(id);
+    }
+
+    // lấy thông tin id của 1 order
+    public Order getOrdersById(long id) {
+        return this.orderRepository.findById(id);
+    }
+
+    public Order updateOrder(Order order) {
+        return this.orderRepository.save(order);
+    }
 }

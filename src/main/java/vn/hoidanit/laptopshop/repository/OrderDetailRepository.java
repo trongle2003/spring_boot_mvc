@@ -5,8 +5,9 @@ import org.springframework.stereotype.Repository;
 
 import vn.hoidanit.laptopshop.domain.Order;
 import vn.hoidanit.laptopshop.domain.OrderDetail;
+import java.util.List;
 
 @Repository
 public interface OrderDetailRepository extends JpaRepository<OrderDetail, Long> {
-
+    List<OrderDetail> findByOrderId(long id);
 }

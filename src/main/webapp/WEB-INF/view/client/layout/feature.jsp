@@ -13,7 +13,7 @@
                                 </div>
                                 <div class="featurs-content text-center">
                                     <h5>Miễn phí vận chuyển</h5>
-                                    <p class="mb-0">Miễn phí vận chuyển lên tới $300</p>
+                                    <p class="mb-0">Hỏa tốc trong 2h</p>
                                 </div>
                             </div>
                         </div>
@@ -24,7 +24,7 @@
                                 </div>
                                 <div class="featurs-content text-center">
                                     <h5>Thanh toán bảo mật</h5>
-                                    <p class="mb-0">100% Thanh toán bảo mật an toàn</p>
+                                    <p class="mb-0">100% Giao dịch an toàn</p>
                                 </div>
                             </div>
                         </div>
@@ -35,7 +35,7 @@
                                 </div>
                                 <div class="featurs-content text-center">
                                     <h5>30 Ngày đổi trả</h5>
-                                    <p class="mb-0">Hoàn tiền và đổi trả trong vòng 30 ngày</p>
+                                    <p class="mb-0">Đổi trả miễn phí</p>
                                 </div>
                             </div>
                         </div>
@@ -46,7 +46,7 @@
                                 </div>
                                 <div class="featurs-content text-center">
                                     <h5>Hỗ trợ 24/7</h5>
-                                    <p class="mb-0">Hỗ trợ mọi khung giờ trong ngày</p>
+                                    <p class="mb-0">Hỗ trợ nhiệt tình</p>
                                 </div>
                             </div>
                         </div>
