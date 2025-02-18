@@ -57,7 +57,7 @@
                                                                     <fmt:formatNumber type="number"
                                                                         value="${order.totalPrice}" />đ
                                                                 </td>
-                                                                <td>${order.user.role.description}</td>
+                                                                <td>${order.user.fullName}</td>
                                                                 <td>${order.status}</td>
                                                                 <td>
                                                                     <a href="/admin/order/${order.id}" type="submit"

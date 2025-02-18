@@ -65,7 +65,7 @@ public class SecurityConfiguration {
                                                 .permitAll()
 
                                                 .requestMatchers("/", "/product/**", "/login", "/client/**", "/css/**",
-                                                                "/js/**",
+                                                                "/js/**", "/register",
                                                                 "/images/**")
                                                 .permitAll()
                                                 .requestMatchers("/admin/**").hasRole("ADMIN")
@@ -94,7 +94,6 @@ public class SecurityConfiguration {
                                 .exceptionHandling(ex -> ex.accessDeniedPage("/access-deny"));// nếu xảy ra lỗi khi phân
                                                                                               // quyền 403 thì chuyển
                                                                                               // hướng sang trang deny
-
                 return http.build();
         }
 

@@ -46,7 +46,7 @@ public class HomePageController {
 
     @GetMapping("/")
     public String getHomePage(Model model) {
-        List<Product> products = this.productService.fetchProducts();
+        List<Product> products = this.productService.fetchAllProducts();
         model.addAttribute("Products1", products);
         return "client/homepage/show";
     }
@@ -105,7 +105,5 @@ public class HomePageController {
         model.addAttribute("cart", cart);
         return "client/cart/show";
     }
-
-    
 
 }

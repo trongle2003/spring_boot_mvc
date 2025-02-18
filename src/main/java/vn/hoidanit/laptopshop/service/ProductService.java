@@ -3,9 +3,12 @@ package vn.hoidanit.laptopshop.service;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import jakarta.servlet.http.HttpSession;
+import jakarta.transaction.Transactional;
 import vn.hoidanit.laptopshop.domain.Cart;
 import vn.hoidanit.laptopshop.domain.CartDetail;
 import vn.hoidanit.laptopshop.domain.Order;
@@ -17,23 +20,27 @@ import vn.hoidanit.laptopshop.repository.CartRepository;
 import vn.hoidanit.laptopshop.repository.OrderDetailRepository;
 import vn.hoidanit.laptopshop.repository.OrderRepository;
 import vn.hoidanit.laptopshop.repository.ProductRepository;
+import vn.hoidanit.laptopshop.repository.UserRepository;
 
 @Service
+@Transactional
 public class ProductService {
     private final ProductRepository productRepository;
     private final CartRepository cartRepository;
     private final CartDetailRepository cartDetailRepository;
     private final UserService userService;
+    private final UserRepository userRepository;
     private final OrderRepository orderRepository;
     private final OrderDetailRepository orderDetailRepository;
 
     public ProductService(ProductRepository productRepository, CartRepository cartRepository,
-            CartDetailRepository cartDetailRepository, UserService userService, OrderRepository orderRepository,
-            OrderDetailRepository orderDetailRepository) {
+            CartDetailRepository cartDetailRepository, UserService userService, UserRepository userRepository,
+            OrderRepository orderRepository, OrderDetailRepository orderDetailRepository) {
         this.productRepository = productRepository;
         this.cartRepository = cartRepository;
         this.cartDetailRepository = cartDetailRepository;
         this.userService = userService;
+        this.userRepository = userRepository;
         this.orderRepository = orderRepository;
         this.orderDetailRepository = orderDetailRepository;
     }
@@ -46,7 +53,11 @@ public class ProductService {
         return this.productRepository.save(product);
     }
 
-    public List<Product> fetchProducts() {
+    public Page<Product> fetchProducts(Pageable page) {
+        return this.productRepository.findAll(page);
+    }
+
+    public List<Product> fetchAllProducts() {
         return this.productRepository.findAll();
     }
 
@@ -58,7 +69,7 @@ public class ProductService {
         return this.productRepository.deleteById(id);
     }
 
-    public void handleAddProductToCart(String email, long productId, HttpSession session) {
+    public void handleAddProductToCart(String email, long productId, HttpSession session, long quantity) {
         User user = this.userService.getUserByEmail(email);
         if (user != null) {
             // check user đã có cart chưa ? nếu chưa thì tạo mới
@@ -81,7 +92,7 @@ public class ProductService {
                     cartDetail.setCart(cart);
                     cartDetail.setProduct(product);
                     cartDetail.setPrice(product.getPrice());
-                    cartDetail.setQuantity(1);
+                    cartDetail.setQuantity(quantity);
                     this.cartDetailRepository.save(cartDetail);
                     // update sum
                     int s = cart.getSum() + 1;
@@ -89,7 +100,7 @@ public class ProductService {
                     this.cartRepository.save(cart);
                     session.setAttribute("sum", s);
                 } else {
-                    oldDetail.setQuantity(oldDetail.getQuantity() + 1);
+                    oldDetail.setQuantity(oldDetail.getQuantity() + quantity);
                     this.cartDetailRepository.save(oldDetail);
                 }
 
@@ -196,7 +207,38 @@ public class ProductService {
         return this.orderRepository.findById(id);
     }
 
+    // cập nhật order
     public Order updateOrder(Order order) {
         return this.orderRepository.save(order);
     }
+
+    // muốn xóa 1 order thì cần xóa orderdetail trước
+    public List<OrderDetail> deleteOrderDetails(long id) {
+        return this.orderDetailRepository.deleteByOrderId(id);
+    }
+
+    // xóa order theo id
+    public Order deleteOrder(long id) {
+        return this.orderRepository.deleteById(id);
+    }
+
+    // lấy thống kê số lượng user
+    public long countUsers() {
+        return this.userRepository.count();// đếm số lượng
+    }
+
+    // lấy thống kê số lượng product
+    public long countProducts() {
+        return this.productRepository.count();
+    }
+
+    // lấy thống kê số lượng order
+    public long countOrders() {
+        return this.orderRepository.count();
+    }
+
+    public List<Order> fetchOrderByUser(User user) {
+        return this.orderRepository.findByUser(user);
+    }
+
 }

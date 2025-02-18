@@ -59,4 +59,17 @@ public class OrderController {
         return "redirect:/admin/order";
     }
 
+    @GetMapping("/admin/order/delete/{id}")
+    public String deleteOrderById(Model model, @PathVariable long id) {
+        this.productService.deleteOrderDetails(id);
+        Order order = this.productService.deleteOrder(id);
+        model.addAttribute("Order1", order);
+        return "admin/order/delete";
+    }
+
+    @GetMapping("/admin/order/delete")
+    public String deleteOrder() {
+        return "redirect:/admin/order";
+    }
+
 }

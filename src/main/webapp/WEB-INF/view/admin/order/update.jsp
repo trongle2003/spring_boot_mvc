@@ -54,8 +54,8 @@
                                                 </div>
                                                 <div class="mb-3">
                                                     <label class="form-label">User: </label>
-                                                    <form:input type="text" class="form-control"
-                                                        path="user.role.description" disabled="true" />
+                                                    <form:input type="text" class="form-control" path="user.fullName"
+                                                        disabled="true" />
                                                 </div>
                                                 <div class="mb-3">
                                                     <label class="form-label">Status: </label>
