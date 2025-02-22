@@ -43,11 +43,14 @@ public class ProductController {
 
     @GetMapping(value = "/admin/product")
     public String getTableProduct(Model model, @RequestParam(value = "page", defaultValue = "1") int page) {
-        Pageable pageable = PageRequest.of(page - 1, 2);
+        Pageable pageable = PageRequest.of(page - 1, 4);
         Page<Product> Products = this.productService.fetchProducts(pageable);
         List<Product> listProducts = Products.getContent();
         model.addAttribute("Products1", listProducts);
-        System.out.println(Products);
+
+        model.addAttribute("currentPage", page);
+        model.addAttribute("totalPages", Products.getTotalPages());
+
         return "admin/product/show";
     }
 
