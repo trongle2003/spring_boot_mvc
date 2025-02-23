@@ -6,6 +6,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -58,9 +61,14 @@ public class UserController {
     }
 
     @RequestMapping(value = "/admin/user")
-    public String getTable(Model model) {
-        List<User> Users = this.userService.getAllUsers();
-        model.addAttribute("Users1", Users);
+    public String getTable(Model model, @RequestParam(value = "page", defaultValue = "1") int page) {
+        Pageable pageable = PageRequest.of(page - 1, 4);
+        Page<User> Users = this.userService.fetchUsers(pageable);
+        List<User> listUsers = Users.getContent();
+        model.addAttribute("Users1", listUsers);
+
+        model.addAttribute("currentPage", page);
+        model.addAttribute("totalPages", Users.getTotalPages());
         return "admin/user/show";
     }
 

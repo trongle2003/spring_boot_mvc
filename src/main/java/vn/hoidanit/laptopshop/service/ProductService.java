@@ -193,8 +193,12 @@ public class ProductService {
     }
 
     // lấy tất cả thông tin của order
-    public List<Order> fetchOrders() {
+    public List<Order> fetchAllSOrders() {
         return this.orderRepository.findAll();
+    }
+
+    public Page<Order> fetchOrders(Pageable page) {
+        return this.orderRepository.findAll(page);
     }
 
     // lấy tất cả thông tin của 1 order

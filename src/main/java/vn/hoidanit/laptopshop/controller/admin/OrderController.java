@@ -2,6 +2,9 @@ package vn.hoidanit.laptopshop.controller.admin;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -27,10 +30,15 @@ public class OrderController {
     }
 
     @GetMapping(value = "/admin/order")
-    public String getOrder(Model model) {
-        List<Order> Orders = this.productService.fetchOrders();
-        model.addAttribute("Order1", Orders);
-        System.out.println(Orders);
+    public String getOrder(Model model, @RequestParam(value = "page", defaultValue = "1") int page) {
+        Pageable pageable = PageRequest.of(page - 1, 4);
+        Page<Order> Orders = this.productService.fetchOrders(pageable);
+        List<Order> listOrders = Orders.getContent();
+        model.addAttribute("Order1", listOrders);
+
+        model.addAttribute("currentPage", page);
+        model.addAttribute("totalPages", Orders.getTotalPages());
+
         return "admin/order/show";
     }
 
