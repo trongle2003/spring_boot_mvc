@@ -3,6 +3,7 @@ package vn.hoidanit.laptopshop.controller.client;
 import java.net.http.HttpRequest;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -111,14 +112,29 @@ public class HomePageController {
     }
 
     @GetMapping("/products")
-    public String getProductPage(Model model, @RequestParam(value = "page", defaultValue = "1") int page) {
-        Pageable pageable = PageRequest.of(page - 1, 6);
-        Page<Product> Products = this.productService.fetchProducts(pageable);
-        List<Product> listProducts = Products.getContent();
+    public String getProductPage(Model model,
+            @RequestParam(value = "page") Optional<String> pageOptional,
+            @RequestParam(value = "name") Optional<String> nameOptional) {
+        int page = 1;
+        try {
+            if (pageOptional.isPresent()) {
+                page = Integer.parseInt(pageOptional.get());
+                if (page < 1)
+                    page = 1;
+            }
+        } catch (NumberFormatException e) {
+            page = 1;
+        }
+
+        Pageable pageable = PageRequest.of(page - 1, 8);
+
+        String name = nameOptional.isPresent() ? nameOptional.get() : "";
+        Page<Product> products = this.productService.fetchProductsWithSpecification(pageable, name);
+        List<Product> listProducts = products.getContent();
         model.addAttribute("Products1", listProducts);
 
         model.addAttribute("currentPage", page);
-        model.addAttribute("totalPages", Products.getTotalPages());
+        model.addAttribute("totalPages", products.getTotalPages());
         return "client/product/products";
     }
 

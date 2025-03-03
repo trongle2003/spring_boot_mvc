@@ -56,165 +56,115 @@
                             </ol>
                             <h3 class="mb-4">Lọc sản phẩm</h3>
 
-                            <div class="row g-4">
-                                <div class="col-lg-12">
-                                    <br>
-                                    <div class="row g-4">
-                                        <div class="col-lg-3">
-                                            <div class="col-lg-12">
-                                                <div class="mb-3">
-                                                    <h5>Hãng sản xuất</h5>
-                                                    <div class="mb-2">
-                                                        <input type="checkbox" class="me-2" id="Categories-1"
-                                                            name="Categories-1" value="Beverages">
-                                                        <label for="Categories-1"> Apple</label>
-                                                    </div>
-                                                    <div class="mb-2">
-                                                        <input type="checkbox" class="me-2" id="Categories-2"
-                                                            name="Categories-1" value="Beverages">
-                                                        <label for="Categories-2"> Asus</label>
-                                                    </div>
-                                                    <div class="mb-2">
-                                                        <input type="checkbox" class="me-2" id="Categories-3"
-                                                            name="Categories-1" value="Beverages">
-                                                        <label for="Categories-3"> Lenovo</label>
-                                                    </div>
-                                                    <div class="mb-2">
-                                                        <input type="checkbox" class="me-2" id="Categories-4"
-                                                            name="Categories-1" value="Beverages">
-                                                        <label for="Categories-4"> Dell</label>
-                                                    </div>
-                                                    <div class="mb-2">
-                                                        <input type="checkbox" class="me-2" id="Categories-5"
-                                                            name="Categories-1" value="Beverages">
-                                                        <label for="Categories-5"> LG</label>
-                                                    </div>
-                                                    <div class="mb-2">
-                                                        <input type="checkbox" class="me-2" id="Categories-5"
-                                                            name="Categories-1" value="Beverages">
-                                                        <label for="Categories-5"> HP</label>
-                                                    </div>
-                                                    <div class="mb-2">
-                                                        <input type="checkbox" class="me-2" id="Categories-5"
-                                                            name="Categories-1" value="Beverages">
-                                                        <label for="Categories-5"> Microsoft</label>
-                                                    </div>
-                                                    <div class="mb-2">
-                                                        <input type="checkbox" class="me-2" id="Categories-5"
-                                                            name="Categories-1" value="Beverages">
-                                                        <label for="Categories-5"> MSI</label>
-                                                    </div>
-                                                    <div class="mb-2">
-                                                        <input type="checkbox" class="me-2" id="Categories-5"
-                                                            name="Categories-1" value="Beverages">
-                                                        <label for="Categories-5"> Razer</label>
-                                                    </div>
-                                                    <div class="mb-2">
-                                                        <input type="checkbox" class="me-2" id="Categories-5"
-                                                            name="Categories-1" value="Beverages">
-                                                        <label for="Categories-5"> Toshiba</label>
-                                                    </div>
-                                                    <div class="mb-2">
-                                                        <input type="checkbox" class="me-2" id="Categories-5"
-                                                            name="Categories-1" value="Beverages">
-                                                        <label for="Categories-5"> Sony</label>
-                                                    </div>
-                                                </div>
-
-                                            </div>
+                            <div class="container">
+                                <!-- Hàng 1: Hãng sản xuất & Mục đích sử dụng -->
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h5>Hãng sản xuất</h5>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="apple">
+                                            <label class="form-check-label" for="apple">Apple</label>
                                         </div>
-
-                                        <div class="col-lg-12">
-                                            <div class="mb-3">
-                                                <h5>Mục đích sử dụng</h5>
-                                                <div class="mb-2">
-                                                    <input type="checkbox" class="me-2" id="Categories-1"
-                                                        name="Categories-1" value="Beverages">
-                                                    <label for="Categories-1"> Gaming</label>
-                                                </div>
-                                                <div class="mb-2">
-                                                    <input type="checkbox" class="me-2" id="Categories-2"
-                                                        name="Categories-1" value="Beverages">
-                                                    <label for="Categories-2"> Sinh viên - văn phòng</label>
-                                                </div>
-                                                <div class="mb-2">
-                                                    <input type="checkbox" class="me-2" id="Categories-3"
-                                                        name="Categories-1" value="Beverages">
-                                                    <label for="Categories-3"> Thiết kế đồ họa</label>
-                                                </div>
-                                                <div class="mb-2">
-                                                    <input type="checkbox" class="me-2" id="Categories-4"
-                                                        name="Categories-1" value="Beverages">
-                                                    <label for="Categories-4"> Mỏng nhẹ </label>
-                                                </div>
-                                                <div class="mb-2">
-                                                    <input type="checkbox" class="me-2" id="Categories-5"
-                                                        name="Categories-1" value="Beverages">
-                                                    <label for="Categories-5"> Doanh nhân</label>
-                                                </div>
-                                            </div>
-
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="asus">
+                                            <label class="form-check-label" for="asus">Asus</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="lenovo">
+                                            <label class="form-check-label" for="lenovo">Lenovo</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="dell">
+                                            <label class="form-check-label" for="dell">Dell</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="dell">
+                                            <label class="form-check-label" for="lg">LG</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="dell">
+                                            <label class="form-check-label" for="acer">Acer</label>
                                         </div>
                                     </div>
 
-                                    <div class="col-lg-12">
-                                        <div class="mb-3">
-                                            <h5>Mức giá</h5>
-                                            <div class="mb-2">
-                                                <input type="checkbox" class="me-2" id="Categories-1"
-                                                    name="Categories-1" value="Beverages">
-                                                <label for="Categories-1"> Dưới 10 triệu </label>
-                                            </div>
-                                            <div class="mb-2">
-                                                <input type="checkbox" class="me-2" id="Categories-2"
-                                                    name="Categories-1" value="Beverages">
-                                                <label for="Categories-2"> Từ 10 - 15 triệu</label>
-                                            </div>
-                                            <div class="mb-2">
-                                                <input type="checkbox" class="me-2" id="Categories-3"
-                                                    name="Categories-1" value="Beverages">
-                                                <label for="Categories-3"> Từ 15 - 20 triệu</label>
-                                            </div>
-                                            <div class="mb-2">
-                                                <input type="checkbox" class="me-2" id="Categories-4"
-                                                    name="Categories-1" value="Beverages">
-                                                <label for="Categories-4"> Trên 20 triệu</label>
-                                            </div>
+                                    <div class="col-md-6">
+                                        <h5>Mục đích sử dụng</h5>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="gaming">
+                                            <label class="form-check-label" for="gaming">Gaming</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="student">
+                                            <label class="form-check-label" for="student">Sinh viên - Văn phòng</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="design">
+                                            <label class="form-check-label" for="design">Thiết kế đồ họa</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="design">
+                                            <label class="form-check-label" for="design">Mỏng nhẹ</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="design">
+                                            <label class="form-check-label" for="design">Doanh nhân</label>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="col-lg-12">
-                                    <div class="mb-3">
-                                        <h5>Sắp xếp</h5>
-                                        <div class="mb-2">
-                                            <input type="radio" class="me-2" id="Categories-1" name="Categories-1"
-                                                value="Beverages">
-                                            <label for="Categories-1"> Giá tăng dần</label>
+                                <!-- Hàng 2: Mức giá & Sắp xếp -->
+                                <div class="row mt-3">
+                                    <div class="col-md-6">
+                                        <h5>Mức giá</h5>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="price1">
+                                            <label class="form-check-label" for="price1">Dưới 10 triệu</label>
                                         </div>
-                                        <div class="mb-2">
-                                            <input type="radio" class="me-2" id="Categories-2" name="Categories-1"
-                                                value="Beverages">
-                                            <label for="Categories-2"> Giá giảm dần</label>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="price2">
+                                            <label class="form-check-label" for="price2">Từ 10-15 triệu</label>
                                         </div>
-                                        <div class="mb-2">
-                                            <input type="radio" class="me-2" id="Categories-3" name="Categories-1"
-                                                value="Beverages">
-                                            <label for="Categories-3"> Không sắp xếp</label>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="price3">
+                                            <label class="form-check-label" for="price3">Từ 15-20 triệu</label>
                                         </div>
-                                        <div class="d-flex justify-content-center my-4">
-                                            <a href="#"
-                                                class="btn border border-secondary px-4 py-3 rounded-pill text-primary w-100">Tìm
-                                                kiếm</a>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="price4">
+                                            <label class="form-check-label" for="price4">Trên 20 triệu</label>
                                         </div>
                                     </div>
+
+                                    <div class="col-md-6">
+                                        <h5>Sắp xếp</h5>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="sortOrder" id="asc">
+                                            <label class="form-check-label" for="asc">Giá tăng dần</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="sortOrder" id="desc">
+                                            <label class="form-check-label" for="desc">Giá giảm dần</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="sortOrder" id="nosc">
+                                            <label class="form-check-label" for="nosc">Không sắp xếp</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Nút tìm kiếm -->
+                                <div class="d-flex justify-content-center my-4">
+                                    <a href="#"
+                                        class="btn border border-secondary px-4 py-3 rounded-pill text-primary w-50">Tìm
+                                        kiếm</a>
                                 </div>
                             </div>
-                            <div class="col-lg-9">
+
+
+                            <div class="col-lg-12">
                                 <div class="row g-4 justify-content-center">
                                     <div class="row g-4">
                                         <c:forEach var="product" items="${Products1}">
-                                            <div class="col-md-6 col-lg-4 ">
+                                            <div class="col-md-6 col-lg-3">
                                                 <div class="rounded position-relative fruite-item">
                                                     <div class="fruite-img">
                                                         <img src="/images/product/${product.image}"
@@ -229,31 +179,27 @@
                                                             <a href="/product/${product.id}">
                                                                 ${product.name}
                                                             </a>
-
                                                         </h4>
                                                         <p class="text-center" style="font-size: 13px;">
                                                             ${product.shortDesc}
                                                         </p>
-
 
                                                         <div class="d-flex flex-lg-wrap justify-content-center">
                                                             <p style="font-size: 15px;text-align: center;width: 100%;"
                                                                 class="text-dark fw-bold mb-3">
                                                                 <fmt:formatNumber type="number"
                                                                     value="${product.price}" /> VND
-
                                                             </p>
                                                             <form action="/add-product-to-cart/${product.id}"
                                                                 method="post">
                                                                 <input type="hidden" name="${_csrf.parameterName}"
                                                                     value="${_csrf.token}" />
                                                                 <button
-                                                                    class="mx-auto border border-secondary rounded-pill px-3 text-primary"><i
-                                                                        class="fa fa-shopping-bag me-2 text-primary"></i>
+                                                                    class="mx-auto border border-secondary rounded-pill px-3 text-primary">
+                                                                    <i class="fa fa-shopping-bag me-2 text-primary"></i>
                                                                     Add to cart
                                                                 </button>
                                                             </form>
-
                                                         </div>
                                                     </div>
                                                 </div>
