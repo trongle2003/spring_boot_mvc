@@ -31,6 +31,12 @@
 
                     <!-- Template Stylesheet -->
                     <link href="/client/css/style.css" rel="stylesheet">
+
+                    <meta name="_csrf" content="${_csrf.token}" />
+                    <meta name="_csrf_header" content="${_csrf.headerName}" />
+
+                    <link rel="stylesheet"
+                        href="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.min.css">
                 </head>
 
 
@@ -126,20 +132,19 @@
                                                     </button>
                                                 </div>
                                             </div>
-                                            <form action="/add-product-from-view-detail" method="post"
-                                                modelAttribute="Products1">
-                                                <input type="hidden" name="${_csrf.parameterName}"
-                                                    value="${_csrf.token}" />
-                                                <input class="form-control d-none" type="text" value="${Products1.id}"
-                                                    name="id" />
-                                                <input class="form-control d-none" type="text" name="quantity"
-                                                    id="cartDetails0.quantity" />
+                                            <!-- <form action="/add-product-from-view-detail" method="post" modelAttribute="Products1"> -->
 
-                                                <button
-                                                    class="btn border border-secondary rounded-pill px-4 py-2 mb-4 text-primary"><i
-                                                        class="fa fa-shopping-bag me-2 text-primary"></i> Add to
-                                                    cart</button>
-                                            </form>
+                                            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+                                            <input class="form-control d-none" type="text" value="${Products1.id}"
+                                                name="id" />
+                                            <input class="form-control d-none" type="text" name="quantity"
+                                                id="cartDetails0.quantity" value="1" />
+
+                                            <button
+                                                class="btn border border-secondary rounded-pill px-4 py-2 mb-4 text-primary"><i
+                                                    class="fa fa-shopping-bag me-2 text-primary"></i> Add to
+                                                cart</button>
+                                            <!-- </form> -->
                                         </div>
                                         <div class="col-lg-12">
                                             <nav>
@@ -250,6 +255,10 @@
                     <script src="/client/lib/waypoints/waypoints.min.js"></script>
                     <script src="/client/lib/lightbox/js/lightbox.min.js"></script>
                     <script src="/client/lib/owlcarousel/owl.carousel.min.js"></script>
+                    <script
+                        src="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.min.js"></script>
+
+
 
                     <!-- Template Javascript -->
                     <script src="/client/js/main.js"></script>
