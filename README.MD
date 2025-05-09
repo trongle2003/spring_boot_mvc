@@ -4,11 +4,11 @@ Template này được sử dụng cho series Java Spring MVC (dự án laptopsh
 ## Về tác giả
 Mọi thông tin về Tác giả Hỏi Dân IT, các bạn có thể tìm kiếm tại đây:
 
-Website chính thức: https://hoidanit.vn/
+Website chính thức: https://demo.vn/
 
-Youtube “Hỏi Dân IT” : https://www.youtube.com/@hoidanit
+Youtube “Hỏi Dân IT” : https://www.youtube.com/@demo
 
-Tiktok “Hỏi Dân IT” :  https://www.tiktok.com/@hoidanit
+Tiktok “Hỏi Dân IT” :  https://www.tiktok.com/@demo
 
 Fanpage “Hỏi Dân IT” : https://www.facebook.com/askITwithERIC/
 

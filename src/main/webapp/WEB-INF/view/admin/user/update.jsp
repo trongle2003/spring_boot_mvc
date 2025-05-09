@@ -80,7 +80,7 @@
                                             <div class="mb-3">
                                                 <label for="avatarFile" class="form-label">Avatar: </label>
                                                 <input class="form-control" type="file" id="avatarFile"
-                                                    name="hoidanitFile" accept=".png,.jpg,.jpeg" />
+                                                    name="demoFile" accept=".png,.jpg,.jpeg" />
                                             </div>
 
                                             <div class="mb-3">

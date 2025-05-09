@@ -18,7 +18,7 @@
 		<!-- lookup parent from repository -->
 	</parent>
 	<groupId>
-		vn.hoidanit
+		vn.demo
 	</groupId>
 	<artifactId>
 		laptopshop
